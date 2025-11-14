@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head>    
+    <link rel="stylesheet" href="bb.css"/>
     <meta charset="utf-8" />
-    <title>Bouncing Box</title>
+    <title>Bouncist Boxe's</title>
     <script src="jquery.min.js"></script>
     <style>
+
+      body{
+        /* background-image: url("https://www.google.com/imgres?q=femtanyl&imgurl=https%3A%2F%2Fimages.genius.com%2Fb71b4cd591da3831acbe4a080d24d689.1000x1000x1.png&imgrefurl=https%3A%2F%2Fgenius.com%2FFemtanyl-katamari-lyrics&docid=y4ViY-4FGJpeeM&tbnid=RKKrZJUDC5dwUM&vet=12ahUKEwiim6iP4u-QAxVZm2oFHVjyMY8QM3oECCsQAA..i&w=1000&h=1000&hcb=2&ved=2ahUKEwiim6iP4u-QAxVZm2oFHVjyMY8QM3oECCsQAA"); */
+        background-image: image: "img/project-instructions/FEMTANYL.jpg";
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
       .box {
         width: 70px;
         height: 70px;
@@ -64,24 +73,58 @@
           box.text(newText);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //////////////////////////////////////////////////////////////////
         /////////////////// YOUR CODE BELOW HERE /////////////////////////
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
 
-
-
-
+        
+        var positionX = 0;
+        var points = 0;
+        var speed = 10; 
+        var positionY;
+        var speedY;
+        var boardHeight = jQuery(window).height();
+        var randNum = Math.random() * 100;
+        
 
         /**
          * This Function will be called 20 times/second.
          * Each time it is called, it should move the Box to a new location.
          * If the box drifts off the screen, turn it around!
          */
-        function update() {
+        function update() 
+        {
+          function moveBoxTo(positionY, speedY) {
+            box.css("left", positionY);
+            box.css("top", speedY);
+          }
+          moveBoxTo(positionX, positionY); 
+          positionX = positionX + speed;
+          if (positionX > boardWidth) {
+          speed = speed * -1
+          }
+          else if (positionX < 0) {
+          speed *= -1
+          }
 
-        
+
 
           
         }
@@ -93,11 +136,12 @@
          * - increase the speed
          * - move the box to the left side of the screen.
          */
-        function handleBoxClick() {
-
-
-
-
+        function handleBoxClick() 
+        {
+          positionX = 0
+          changeBoxText(points);
+          points = points + 1;
+          speed = 3 * points + 10;
         }
 
 
