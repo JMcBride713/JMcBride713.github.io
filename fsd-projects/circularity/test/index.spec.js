@@ -32,17 +32,19 @@ describe('Circularity', function() {
         done();
     });
 
-    describe('TODO 1: should declare variables', function() {
+    describe(function() {
         it('circles should be an array', function() {
             expect(circles).to.be.an('array');
+            var circle;
+            var circles = [];
         });
     });
 
-    describe('TODO 2: should create a function to draw a circle', function() {
+    describe(function drawCircle() {
         var currentCircleID;
         before(function() {
-            sinon.spy(draw, 'randomCircleInArea');
-            sinon.spy(physikz, 'addRandomVelocity');
+            sinon.spy(draw.randomCircleInArea);
+            sinon.spy(physikz.addRandomVelocity);
             sinon.spy(view, 'addChild');
 
             currentCircleID = window.getCircleID();
